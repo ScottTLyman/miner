@@ -45,34 +45,34 @@
           src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Moon_rotating_full_220px.gif" alt=""
           onclick="mine()">
       </div>
-      <div class="col-4">
+      <div id="stats" class="col-4">
 
-        <div class="card seeThru text-info">
+        <!--        <div class="card seeThru text-info">
           <div class="card-header">
             <h3 class="display-3 fw-bold text-info">Stats</h3>
           </div>
           <div class="card-body">
             <h5>CPS (Cheese per second) <span> = 0</span></h5>
             <h5>CM (Cheese Multiplier) <span> x 0</span></h5>
-          </div>
+          </div>-->
 
-        </div>
       </div>
-      <div class="row p-4 justify-content-center">
-        <div class="col-6 text-center text-info">
-          <div class="card seeThru text-info">
-            <div class="card-header">
-              <h3 class="display-3 fw-bold text-info">Upgrades</h3>
-            </div>
-            <div class="card-body">
-              <button class="btn btn-secondary text-info" onclick="buyKnife()">Cheese Knife</button>
-              <button class="btn btn-secondary text-info">Cheese Drill</button>
-              <button class="btn btn-secondary text-info">Cheese Cart</button>
-              <button class="btn btn-secondary text-info">Cheese Grater</button>
-            </div>
+    </div>
+    <div class="row p-4 justify-content-center">
+      <div class="col-6 text-center text-info">
+        <div class="card seeThru text-info">
+          <div class="card-header">
+            <h3 class="display-3 fw-bold text-info">Upgrades</h3>
           </div>
-
+          <div class="card-body">
+            <button class="btn btn-secondary text-info" onclick="buyCKnife()">Cheese Knife</button>
+            <button class="btn btn-secondary text-info" onclick="buyCDrill()">Cheese Drill</button>
+            <button class="btn btn-secondary text-info" onclick="buyRover()">Cheese Cart</button>
+            <button class="btn btn-secondary text-info" onclick="buyGrater()">Cheese Grater</button>
+          </div>
         </div>
+
+      </div>
   </main>
 
   <footer class="container-fluid">
