@@ -1,0 +1,17 @@
+
+body, html{
+  height: 100%;
+}
+
+.bg{
+  background-image: url("https://c.tenor.com/v-8k630mSfEAAAAC/stars-space.gif");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.moon{
+  height: 350px;
+  width: auto;
+}
