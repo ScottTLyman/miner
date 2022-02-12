@@ -1,9 +1,4 @@
 let cheese = 0;
-let knife = 0;
-let drill = 0;
-let rover = 0
-let grater = 0;
-let multiTotal = 0;
 
 let clickUp = {
   cKnife: { price: 100, quantity: 0, multiplier: 2 },
@@ -16,12 +11,9 @@ let autoUp = {
 }
 
 function mine() {
-  if (clickUp.cKnife.quantity > 0) {
-    cheese += 10(clickUp.cKnife.multiplier)
-  } else {
-    cheese += 10
-  }
-  drawRsc()
+  cheese += 10
+  updateTot()
+
 }
 
 function drawRsc() {
@@ -33,11 +25,11 @@ function drawRsc() {
     <h3 class="display-3 fw-bold text-info">Resources</h3>
   </div>
   <div class="card-body">
-    <h5>Cheese: <span id="cTotal"> ${cheese}</span></h5>
-    <h5>Cheese Knives: <span id="knife"> ${knife}</span></h5>
-    <h5>Cheese Drill: <span> ${drill}</span></h5>
-    <h5>Moustronauts: <span> ${rover}</span></h5>
-    <h5>Graters: <span> ${grater}</span></h5>
+    <h5>Cheese: <span> ${cheese}</span></h5>
+    <h5>Cheese Knives: <span> ${clickUp.cKnife.quantity}</span></h5>
+    <h5>Cheese Drills: <span> ${clickUp.cDrill.quantity}</span></h5>
+    <h5>Moustronauts: <span> ${autoUp.rover.quantity}</span></h5>
+    <h5>Graters: <span> ${autoUp.grater.quantity}</span></h5>
   </div>
 </div>
   `
@@ -54,8 +46,8 @@ function drawStats() {
       <h3 class="display-3 fw-bold text-info">Stats</h3>
     </div>
     <div class="card-body">
-      <h5>CPS (Cheese per second) <span> = 0</span></h5>
-      <h5>CM (Cheese Multiplier) <span> x ${multiTotal}</span></h5>
+      <h5>CPS (Cheese per Second) <span> = 0</span></h5>
+      <h5>CCM (Cheese Click Multiplier) <span> x ${multiClick}</span></h5>
     </div>
 
     `
@@ -65,43 +57,83 @@ function drawStats() {
 
 function buyCKnife() {
   if (cheese >= clickUp.cKnife.price) {
-    knife++
     cheese -= clickUp.cKnife.price
-    clickUp.cKnife.multiplier++
+    clickUp.cKnife.quantity++
+    clickUp.cKnife.price *= 2
+    updateTot()
   } else {
-  } update()
+    alert('Need more 🧀🧀🧀')
+  }
 }
 
 function buyCDrill() {
-  console.log(drill)
   if (cheese >= clickUp.cDrill.price) {
-    drill++
     cheese -= clickUp.cDrill.price
-    console.log(drill)
+    clickUp.cDrill.quantity++
+    clickUp.cDrill.price *= 2
+    updateTot()
   } else {
-  } update()
+    alert('Need more 🧀🧀🧀')
+  }
 }
 
 function buyRover() {
   if (cheese >= autoUp.rover.price) {
-    rover++
     cheese -= autoUp.rover.price
+    autoUp.rover.quantity++
+    autoUp.rover.price *= 2
+    updateTot()
   } else {
-  } update()
+    alert('Need more 🧀🧀🧀')
+  }
 }
 
 function buyGrater() {
   if (cheese >= autoUp.grater.price) {
-    grater++
     cheese -= autoUp.grater.price
-    console.log(grater)
+    autoUp.grater.quantity++
+    autoUp.grater.price *= 2
+    updateTot()
   } else {
-  } update()
+    alert('Need more 🧀🧀🧀')
+  }
 }
-function update() {
+
+function multiClick(num) {
+  for (let i = 0; i < num; i++) {
+    mine()
+    console.log('mining')
+  }
+}
+
+function beginInt() {
+  let interval = setInterval(autoCollect, 3000)
+}
+
+function clickCount() {
+  let countElem = (clickUp.cKnife.multiplier * clickUp.cKnife.quantity) + (clickUp.cDrill.multiplier * clickUp.cDrill.quantity)
+  if (countElem == 0) {
+    countElem++
+  }
+  multiClick(countElem)
+}
+
+function multiAuto(num) {
+  for (let i = 0; i < num; i++) {
+    mine()
+  }
+}
+
+function autoCollect() {
+  let collectElem = (autoUp.rover.multiplier * autoUp.rover.quantity) + (autoUp.grater.multiplier * autoUp.grater.quantity)
+  multiAuto(collectElem)
+}
+
+
+function updateTot() {
   drawRsc()
   drawStats()
 }
 
-drawRsc()
-drawStats()
+updateTot()
+beginInt()
