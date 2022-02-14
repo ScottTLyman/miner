@@ -1,4 +1,6 @@
 let cheese = 0;
+let collectElem = 0;
+let countElem = 0;
 
 let clickUp = {
   cKnife: { price: 100, quantity: 0, multiplier: 2 },
@@ -11,7 +13,7 @@ let autoUp = {
 }
 
 function mine() {
-  cheese++
+  cheese += 10
   updateTot()
 
 }
@@ -46,8 +48,8 @@ function drawStats() {
       <h3 class="display-3 fw-bold text-info">Stats</h3>
     </div>
     <div class="card-body">
-      <h5>CPS (Cheese per Second) <span> = 0</span></h5>
-      <h5>CCM (Cheese Click Multiplier) <span> x 0</span></h5>
+      <h5>CPS (Cheese per Second) <span> = ${collectElem}</span></h5>
+      <h5>CCM (Cheese Click Multiplier) <span> x ${countElem}</span></h5>
     </div>
 
     `
@@ -111,11 +113,12 @@ function autoInt() {
 }
 
 function clickCount() {
-  let countElem = (clickUp.cKnife.multiplier * clickUp.cKnife.quantity) + (clickUp.cDrill.multiplier * clickUp.cDrill.quantity)
-  if (countElem == 0) {
-    countElem++
-  }
-  multiClick(countElem)
+  countElem = (clickUp.cKnife.multiplier * clickUp.cKnife.quantity) + (clickUp.cDrill.multiplier * clickUp.cDrill.quantity)
+  // if (countElem == 0) {
+  countElem++
+  // multiClick(countElem)
+  cheese += countElem
+  updateTot()
 }
 
 function multiAuto(num) {
@@ -126,14 +129,15 @@ function multiAuto(num) {
 
 function autoCollect() {
   let collectElem = (autoUp.rover.multiplier * autoUp.rover.quantity) + (autoUp.grater.multiplier * autoUp.grater.quantity)
-  multiAuto(collectElem)
+  collectElem++
+  cheese += collectElem
+  updateTot()
 }
 
 
 function updateTot() {
   drawStats()
   drawRsc()
-
 }
 
 updateTot()
