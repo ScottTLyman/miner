@@ -101,13 +101,6 @@ function buyGrater() {
   }
 }
 
-function multiClick(num) {
-  for (let i = 0; i < num; i++) {
-    mine()
-    console.log('mining')
-  }
-}
-
 function autoInt() {
   let interval = setInterval(autoCollect, 3000)
 }
