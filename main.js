@@ -7,7 +7,7 @@ let clickUp = {
 
 let autoUp = {
   rover: { price: 600, quantity: 0, multiplier: 15 },
-  grater: { price: 6000, quantity: 0, multiplier: 30 }
+  grater: { price: 6000, quantity: 0, multiplier: 40 }
 }
 
 function mine() {
@@ -26,10 +26,10 @@ function drawRsc() {
   </div>
   <div class="card-body">
     <h5>Cheese: <span> ${cheese}</span></h5>
-    <h5>Cheese Knives: <span> ${clickUp.cKnife.quantity}</span></h5>
-    <h5>Cheese Drills: <span> ${clickUp.cDrill.quantity}</span></h5>
-    <h5>Moustronauts: <span> ${autoUp.rover.quantity}</span></h5>
-    <h5>Graters: <span> ${autoUp.grater.quantity}</span></h5>
+    <h5>Cheese Knives: <span> ${clickUp.cKnife.quantity} x ${clickUp.cKnife.multiplier}</span></h5>
+    <h5>Cheese Drills: <span> ${clickUp.cDrill.quantity} x ${clickUp.cDrill.multiplier}</span></h5>
+    <h5>Cheese Carts: <span> ${autoUp.rover.quantity} x ${autoUp.rover.multiplier}</span></h5>
+    <h5>Cheese Graters: <span> ${autoUp.grater.quantity} x ${autoUp.grater.multiplier}</span></h5>
   </div>
 </div>
   `
@@ -47,7 +47,7 @@ function drawStats() {
     </div>
     <div class="card-body">
       <h5>CPS (Cheese per Second) <span> = 0</span></h5>
-      <h5>CCM (Cheese Click Multiplier) <span> x ${multiClick}</span></h5>
+      <h5>CCM (Cheese Click Multiplier) <span> x 0</span></h5>
     </div>
 
     `
@@ -106,7 +106,7 @@ function multiClick(num) {
   }
 }
 
-function beginInt() {
+function autoInt() {
   let interval = setInterval(autoCollect, 3000)
 }
 
@@ -131,9 +131,10 @@ function autoCollect() {
 
 
 function updateTot() {
-  drawRsc()
   drawStats()
+  drawRsc()
+
 }
 
 updateTot()
-beginInt()
+autoInt()
