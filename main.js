@@ -11,7 +11,7 @@ let autoUp = {
 }
 
 function mine() {
-  cheese += 10
+  cheese++
   updateTot()
 
 }
